@@ -6,6 +6,19 @@ tgafa@cesar.school
 
 Data de criação: 21/08/2024   10:59
 
+
+Atualizações: 
+
+21/08/2024 10:59 - Adicionada a função Binario
+21/08/2024 11:05 - Adicionada a função Octal
+21/08/2024 11:19 - Adicionada a função Hexa
+21/08/2024 11:55 - Adicionada a função BCD
+21/08/2024 14:09 - Adicionada a função Complemento2
+21/08/2024 15:11 - Adicionada a função BitsFloat
+21/08/2024 15:40 - Adicionada a função BitsDouble
+
+
+
 Instruções: 
 
 Construa uma calculadora programador didática,  implementada na linguagem C, que tenha as seguintes conversões
