@@ -120,7 +120,7 @@ void Complemento2(int n) {/*14:09 21/08/2024*/
     printf("\n");
 }
 
-void BitsFloat(float num) {
+void BitsFloat(float num) {/*15:11 21/08/2024*/
     union {
         float f;
         unsigned int bits;
@@ -143,7 +143,7 @@ void BitsFloat(float num) {
            num, sinal, expoente, expoente - 127, fracao);
 }
 
-void BitsDouble(double num) {
+void BitsDouble(double num) {/*15:40 20/08/2024*/
     union {
         double d;
         unsigned long long bits;
