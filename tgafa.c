@@ -22,7 +22,7 @@ O codigo fonte deve conter um cabeçalho dos dados do autor e  revisões/ atuali
 #include <stdio.h>
 #include <stdlib.h>
 
-void decimalParaBinario(int n) {
+void Binario(int n) {
     int binario[32];
     int i = 0;
     
@@ -39,8 +39,22 @@ void decimalParaBinario(int n) {
     printf("\n");
 }
 
-
-
+void Octal(int n) {
+    int octal[32];
+    int i = 0;
+    
+    while (n > 0) {
+        octal[i] = n % 8;
+        n = n / 8;
+        i++;
+    }
+    
+    printf("Número octal: ");
+    for (int j = i - 1; j >= 0; j--) {
+        printf("%d", octal[j]);
+    }
+    printf("\n");
+}
 
 int main(){
 
@@ -52,18 +66,19 @@ printf("\t2 - Conversão de decimal para octal\n");
 printf("\t3 - Conversão de decimal para hexadecimal\n");
 printf("\t4 - Conversão de decimal para BCD\n");
 
-scanf("%d", &escolha);
-
+    scanf("%d", &escolha);
+    printf("Digite um número decimal: ");
+    scanf("%d", &numero);
     switch (escolha)
     {
     case 1:
-        printf("Digite um número decimal: ");
-        scanf("%d", &numero);
-        decimalParaBinario(numero);
+    
+        Binario(numero);
         break;
     
     case 2:
-    
+        
+        Octal(numero);
         break;
 
     case 3:
