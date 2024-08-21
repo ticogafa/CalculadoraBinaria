@@ -3,6 +3,8 @@ Código feito por Tiago Gurgel para a cadeira de Infraestrutura de Hardware do p
 
 tgafa@cesar.school
 
+Data de criação: 21/08/2024   10:59
+
 Instruções: 
 
 Construa uma calculadora programador didática,  implementada na linguagem C, que tenha as seguintes conversões
@@ -73,6 +75,25 @@ void Hexa(int n) {/*11:19 21/08/2024*/
     printf("\n");
 }
 
+void BCD(int n) {/*11:55 21/08/2024*/
+    int bcd[32];
+    int i = 0;
+    
+    while (n > 0) {
+        int digito = n % 10;
+        bcd[i] = digito;
+        n = n / 10;
+        i++;
+    }
+    
+    printf("Número BCD: ");
+    for (int j = i - 1; j >= 0; j--) {
+        printf("%04d ", bcd[j]);
+    }
+    printf("\n");
+}
+
+
 int main(){
 
 int numero, escolha;
@@ -105,6 +126,7 @@ printf("\t4 - Conversão de decimal para BCD\n");
 
     case 4:
 
+        BCD(numero);
         break;
 
     default:
