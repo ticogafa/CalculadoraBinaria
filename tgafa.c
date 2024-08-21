@@ -56,6 +56,23 @@ void Octal(int n) {
     printf("\n");
 }
 
+void Hexa(int n) {
+    int hexa[32];
+    int i = 0;
+    
+    while (n > 0) {
+        hexa[i] = n % 16;
+        n = n / 16;
+        i++;
+    }
+    
+    printf("Número hexa: ");
+    for (int j = i - 1; j >= 0; j--) {
+        printf("%d", hexa[j]);
+    }
+    printf("\n");
+}
+
 int main(){
 
 int numero, escolha;
@@ -83,6 +100,7 @@ printf("\t4 - Conversão de decimal para BCD\n");
 
     case 3:
         
+        Hexa(numero);
         break;
 
     case 4:
