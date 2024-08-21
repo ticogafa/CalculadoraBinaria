@@ -94,7 +94,7 @@ void BCD(int n) {/*11:55 21/08/2024*/
     printf("\n");
 }
 
-void Complemento2(int n) {
+void Complemento2(int n) {/*14:09 21/08/2024*/
     unsigned short complemento2[16];
     int i = 0;
     unsigned short num = (unsigned short)n;
@@ -120,16 +120,60 @@ void Complemento2(int n) {
     printf("\n");
 }
 
+void BitsFloat(float num) {
+    union {
+        float f;
+        unsigned int bits;
+    } floatUnion;
+    
+    floatUnion.f = num;
+    
+    unsigned int sinal = (floatUnion.bits >> 31) & 1;/*representa os 31 bits da forma inteiro do número float, >>31 avança
+    31 bits para a direita, ou seja, pega o bit mais significativo que representa o sinal do número
+    */
+    unsigned int expoente = (floatUnion.bits >> 23) & 0xFF;/* os bits de expoente estão entre os bits 23 e 30, por isso
+    é feito um shift de 23 bits para a direita e é feito um AND com 0xFF para pegar os 8 bits do expoente
+    */
+    unsigned int fracao = floatUnion.bits & 0x7FFFFF;/*extrai os 23 bits da fração do número float, que são os bits 0 a 22,
+    a operação AND com 0x7FFFFF esconde todos menos esses 23 bits, isolando o valor da fração
+    
+    */
+    
+    printf("Float: %f\nSinal: %u\nExpoente: %u\nExpoente com viés: %d\nFração: %u\n", 
+           num, sinal, expoente, expoente - 127, fracao);
+}
+
+void BitsDouble(double num) {
+    union {
+        double d;
+        unsigned long long bits;
+    } doubleUnion;
+    
+    doubleUnion.d = num;
+    
+    unsigned long long sinal = (doubleUnion.bits >> 63) & 1; /*representa os 64 bits da forma inteiro do número double, >>63 avança
+    63 bits para a direita, ou seja, pega o bit mais significativo que representa o sinal do número
+    */
+    unsigned long long expoente = (doubleUnion.bits >> 52) & 0x7FF; /* os bits de expoente estão entre os bits 52 e 62, por isso
+    é feito um shift de 52 bits para a direita e é feito um AND com 0x7FF para pegar os 11 bits do expoente
+    
+    */
+    unsigned long long fracao = doubleUnion.bits & 0xFFFFFFFFFFFFF;/*extrai os 52 bits da fração do número double, que são os bits 0 a 51,
+    a operação AND com 0xFFFFFFFFFFFFF esconde todos menos esses 52 bits, isolando o valor da fração
+    
+    */
+    
+    printf("Double: %lf\nSinal: %llu\nExpoente: %llu\nExpoente com viés: %lld\nFração: %llu\n", 
+    num, sinal, expoente, expoente - 1023, fracao);
+}
+
 int main(){
 
 int numero, escolha;
 
-printf("Escolha uma operação para realizar: \n");
-printf("\t1 - Conversão de decimal para binário\n");
-printf("\t2 - Conversão de decimal para octal\n");
-printf("\t3 - Conversão de decimal para hexadecimal\n");
-printf("\t4 - Conversão de decimal para BCD\n");
-printf("\t5 - Conversão de decimal para complemento a 2\n");
+printf("Escolha uma operação para realizar: \n\t1 - Conversão de decimal para binário\n\t2 - Conversão de decimal para octal\n");
+printf("\t3 - Conversão de decimal para hexadecimal\n\t4 - Conversão de decimal para BCD\n\t5 - Conversão de decimal para complemento a 2\n");
+printf("\t6 - Conversão de decimal para float e double\n");
 
     scanf("%d", &escolha);
     printf("Digite um número decimal: ");
@@ -161,6 +205,11 @@ printf("\t5 - Conversão de decimal para complemento a 2\n");
         Complemento2(numero);
         break;
 
+    case 6: 
+
+        BitsFloat(numero);
+        BitsDouble(numero);
+        break;
     default:
 
     printf("Opção inválida\n");
