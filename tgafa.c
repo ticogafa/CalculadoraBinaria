@@ -221,6 +221,7 @@ printf("\t6 - Conversão de decimal para float e double\n");
     case 6: 
 
         BitsFloat(numero);
+        printf("\n");
         BitsDouble(numero);
         break;
     default:
