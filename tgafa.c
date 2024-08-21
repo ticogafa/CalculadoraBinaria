@@ -1,4 +1,5 @@
 /*
+
 Código feito por Tiago Gurgel para a cadeira de Infraestrutura de Hardware do professor Fernando Ferreira de Carvalho
 
 tgafa@cesar.school
@@ -93,6 +94,31 @@ void BCD(int n) {/*11:55 21/08/2024*/
     printf("\n");
 }
 
+void Complemento2(int n) {
+    unsigned short complemento2[16];
+    int i = 0;
+    unsigned short num = (unsigned short)n;
+
+    if (n < 0) {
+        num = ~(-n) + 1;
+    }
+
+    while (num > 0) {
+        complemento2[i] = num % 2;
+        num = num / 2;
+        i++;
+    }
+
+    printf("Número em complemento a 2 (16 bits): ");
+    for (int j = 15; j >= 0; j--) {
+        if (j >= i) {
+            printf("0");
+        } else {
+            printf("%d", complemento2[j]);
+        }
+    }
+    printf("\n");
+}
 
 int main(){
 
@@ -103,6 +129,7 @@ printf("\t1 - Conversão de decimal para binário\n");
 printf("\t2 - Conversão de decimal para octal\n");
 printf("\t3 - Conversão de decimal para hexadecimal\n");
 printf("\t4 - Conversão de decimal para BCD\n");
+printf("\t5 - Conversão de decimal para complemento a 2\n");
 
     scanf("%d", &escolha);
     printf("Digite um número decimal: ");
@@ -127,6 +154,11 @@ printf("\t4 - Conversão de decimal para BCD\n");
     case 4:
 
         BCD(numero);
+        break;
+
+    case 5:
+
+        Complemento2(numero);
         break;
 
     default:
