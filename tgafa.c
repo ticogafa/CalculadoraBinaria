@@ -18,11 +18,11 @@ OBS: deve ser entregue o executável com as iniciais do email e link do git com 
 A cada questão implementada deve ser feito um comite no git . 
 O codigo fonte deve conter um cabeçalho dos dados do autor e  revisões/ atualizações com datas e hora
 
- */
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
-void Binario(int n) {
+void Binario(int n) { /*10:59 21/08/2024*/
     int binario[32];
     int i = 0;
     
@@ -39,7 +39,7 @@ void Binario(int n) {
     printf("\n");
 }
 
-void Octal(int n) {
+void Octal(int n) {/*11:05 21/08/2024*/
     int octal[32];
     int i = 0;
     
@@ -56,7 +56,7 @@ void Octal(int n) {
     printf("\n");
 }
 
-void Hexa(int n) {
+void Hexa(int n) {/*11:19 21/08/2024*/
     int hexa[32];
     int i = 0;
     
